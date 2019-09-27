@@ -23,7 +23,7 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': 'postgres',
         'HOST': '0.0.0.0',
-        'PORT': '5434',
+        'PORT': '5432',
     }
 }
 
@@ -33,7 +33,7 @@ DATABASES = {
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://0.0.0.0:6381/1',
+        'LOCATION': 'redis://0.0.0.0:6379/1',
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         },
@@ -50,7 +50,7 @@ CACHE_TTL = 60 * 15  # 15 mins
 
 # Use redis as broker. Note that the DB used should be different from the
 # the one the CACHE is using.
-CELERY_BROKER_URL = 'amqp://@0.0.0.0:5674'
+CELERY_BROKER_URL = 'amqp://@0.0.0.0:5672'
 
 
 # LOGGING CONFIGURATION

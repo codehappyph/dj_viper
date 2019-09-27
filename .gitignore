@@ -7,6 +7,8 @@ __pycache__
 *.log
 *.sock
 
+var/scripts/*.txt
+
 var/lib/postgres
 var/lib/redis
 var/lib/rabbitmq

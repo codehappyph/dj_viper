@@ -19,6 +19,10 @@ BASE_DIR = os.path.dirname(
         os.path.dirname(os.path.abspath(__file__))
     )
 )
+SCRIPT_DIR = os.path.join(
+    os.path.dirname(BASE_DIR),
+    'var', 'scripts'
+)
 
 
 # Quick-start development settings - unsuitable for production
@@ -42,6 +46,9 @@ INSTALLED_APPS = [
     # Celery integrations
     'django_celery_results',
     'django_celery_beat',
+
+    # Local Apps
+    'fetch',
 ]
 
 MIDDLEWARE = [
