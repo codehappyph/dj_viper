@@ -12,6 +12,8 @@ django-filter
 celery
 django-celery-results
 django-celery-beat
+gevent
+flower
 
 # Redis cache integration
 django-redis

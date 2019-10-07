@@ -4,12 +4,78 @@ Viper Project
 A sample Django project with a good production setup.
 
 
-## Development setup
+## Pre-requisites
 
-To do
+- Python 3.6.x
+- PostgreSQL 10.x
+- Redis (or Memurai for Windows)
+- RabbitMQ
 
 
-## Production setup
+## Development setup (Windows)
+
+1) Create a virtual environment and install requirements
+
+```
+python -m venv env
+env\Scripts\activate
+pip install -r requirements.txt
+```
+
+**NOTE:**
+
+The commands in the succeeding steps should be run while the virtualenv is
+activated.
+
+
+2) Apply migrations and create superuser
+
+```
+cd viper
+python manage.py migrate
+python manage.py createsuperuser
+```
+
+3) Run Django server
+
+```
+python manage.py runserver
+```
+
+4) Running celery and celerybeat
+
+You need to run each commands in a seperate shell
+
+```
+cd viper
+celery -A viper worker -P gevent --loglevel info -E
+```
+
+```
+cd viper
+celery -A viper beat --pidfile=..\var\run\celery\beat.pid --loglevel info
+```
+
+Optional:
+
+Run celery flower (web monitoring tool)
+
+
+```
+celery -A viper flower --port=5555
+```
+
+Allow it through Windows firewall and then open your browser to
+`http://127.0.0.1:5555`.
+
+
+**NOTE:**
+
+Use Chrome or Firefox when opening Celery Flower page as it there are
+incompatibilities with Edge or IE.
+
+
+## Production setup (Linux)
 
 1) Clone project to /srv/src/
 

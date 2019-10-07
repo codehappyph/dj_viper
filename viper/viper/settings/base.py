@@ -147,7 +147,8 @@ LOG_FILE = os.path.join(
     os.path.dirname(BASE_DIR), 'var', 'log', '{}_app.log'.format(SITE_NAME))
 
 if not os.path.exists(LOG_FILE):
-    (open(LOG_FILE, 'w').write('')).close()
+    with open(LOG_FILE, 'w') as fh:
+        fh.write('')
 
 LOGGING = {
     'version': 1,
